@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./Detail.module.css";
 
 function Detail() {
     const { id } = useParams();
@@ -15,23 +16,28 @@ function Detail() {
     useEffect(() => {
         getMovie();
     }, []);
+    // console.log(movie);
     return (
-        <div>
+        <div className={styles.movie}>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
-                <div>
-                    <img src={movie.medium_cover_image} />
-                    <h2>TITLE: {movie.title_long}</h2>
-                    <h2>RATING: {movie.rating}</h2>
-                    <h2>RUNTIME: {movie.runtime}</h2>
-                    <h2>GENRES</h2>
-                    <ul>
-                        {movie.genres.map((g, index) => {
-                            // console.log(index, g);
-                            <li key={`${id}_${index}`}>{g}</li>
-                        })}
-                    </ul>
+                <div className={styles.movie}>
+                    <img src={movie.medium_cover_image} className={styles.movie__img} />
+                    <div>
+                        <h2 className={styles.movie__title}>{movie.title}</h2>
+                        <h3 className={styles.movie__year}>YEAR {movie.year}</h3>
+                        <h3 className={styles.movie__rating}>RATING {movie.rating}</h3>
+                        <h3 className={styles.movie__runtime}>RUNTIME {movie.runtime}</h3>
+                        
+                        <ul className={styles.movie__genres}>
+                        <span >GENRES</span>{movie.genres.map((g) => (
+                                // console.log(g);
+                                <li>{g}</li>
+                            ))}
+                        </ul>
+                        <p>{movie.description_full}</p>
+                    </div>
                 </div>
             )}
         </div>
