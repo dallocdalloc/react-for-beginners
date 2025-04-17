@@ -26,17 +26,22 @@ function Detail() {
                     <img src={movie.medium_cover_image} className={styles.movie__img} />
                     <div>
                         <h2 className={styles.movie__title}>{movie.title}</h2>
-                        <h3 className={styles.movie__year}>YEAR {movie.year}</h3>
+                        <ul>
+                            <li className={styles.movie__year}>YEAR {movie.year}</li>
+                            <li className={styles.movie__year}>RATING {movie.rating}</li>
+                            <li className={styles.movie__year}>RUNTIME {movie.runtime}</li>
+                        </ul>
+                        {/* <h3 className={styles.movie__year}>YEAR {movie.year}</h3>
                         <h3 className={styles.movie__rating}>RATING {movie.rating}</h3>
-                        <h3 className={styles.movie__runtime}>RUNTIME {movie.runtime}</h3>
+                        <h3 className={styles.movie__runtime}>RUNTIME {movie.runtime}</h3> */}
                         
+                        <p>{movie.description_full}</p>
                         <ul className={styles.movie__genres}>
                         <span >GENRES</span>{movie.genres.map((g) => (
                                 // console.log(g);
                                 <li>{g}</li>
                             ))}
                         </ul>
-                        <p>{movie.description_full}</p>
                     </div>
                 </div>
             )}
